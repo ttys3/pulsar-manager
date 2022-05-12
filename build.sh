@@ -2,7 +2,7 @@
 
 set -eou pipefail
 
-rm -rf .gradle
+# in case of npm node symlink problem conflict with local build generated .gradle dir
 rm -rf front-end/.gradle
 
 mkdir -p .gradle/caches
