@@ -8,7 +8,8 @@ rm -rf front-end/.gradle
 mkdir -p .gradle/caches
 
 # generate build/distributions/pulsar-manager.tar
-podman run --rm -ti -v "$(pwd)/.gradle/caches":/root/.gradle/caches -v "$(pwd)":/build -w /build openjdk:8-jdk sh -c './gradlew build -x test'
+# must use dir `pulsar-manager`, it will used as pulsar-manager/bin/pulsar-manager shell script filename
+podman run --rm -ti -v "$(pwd)/.gradle/caches":/root/.gradle/caches -v "$(pwd)":/pulsar-manager -w /pulsar-manager openjdk:8-jdk sh -c './gradlew build -x test'
 
 ls -l build/distributions
 
